@@ -1,0 +1,16 @@
+/driver/out/
+*.sys
+*.cat
+*.cer
+*.exe
+*.dll
+*.cab
+*.drk
+*.pfx
+*.p12
+*.pvk
+*.key
+*.pem
+*.log
+__pycache__/
+*.pyc
