@@ -1,0 +1,50 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=USBDevice
+ClassGuid={88bae032-5a81-49f0-bc3d-a4ff138216d6}
+Provider=%Provider%
+DriverVer=10/05/2026,0.1.5.0
+CatalogFile=aim_mxl.cat
+PnpLockdown=1
+
+[Manufacturer]
+%Provider%=Models,NTarm64
+
+[Models.NTarm64]
+%DeviceName%=Device_Install,USB\VID_11CC&PID_0101
+
+[DestinationDirs]
+Driver_Copy=12
+
+[SourceDisksNames]
+1=%DiskName%,,,
+
+[SourceDisksFiles]
+aim_mxl.sys=1
+
+[Device_Install.NT]
+CopyFiles=Driver_Copy
+
+[Driver_Copy]
+aim_mxl.sys
+
+[Device_Install.NT.Services]
+AddService=aim_mxl,0x00000002,Driver_Service
+
+[Driver_Service]
+DisplayName=%DeviceName%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\aim_mxl.sys
+
+[Device_Install.NT.Wdf]
+KmdfService=aim_mxl,Wdf_Section
+
+[Wdf_Section]
+KmdfLibraryVersion=1.15
+
+[Strings]
+Provider="AIM MXL compatibility project"
+DeviceName="AIM MXL USB (ARM64 experimental)"
+DiskName="AIM MXL ARM64 driver"
